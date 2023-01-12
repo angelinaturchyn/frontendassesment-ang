@@ -17,7 +17,9 @@ If one of the required fields is missing user should see an error message : "Ple
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install` - to install all the dependecies
+
+### `npm start` - to start the build
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
