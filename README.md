@@ -3,7 +3,7 @@
 
 This is a frontend assesment for a user creation form.
 
-User can be created by typing into the following fields:
+User can be created by typing into the following fields, and selecting from the dropdown menu options:
 
 - Full Name
 - Email
