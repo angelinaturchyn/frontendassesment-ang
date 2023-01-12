@@ -16,6 +16,7 @@ function App() {
     const [states, setStates] = useState();
     const [state, setState] = useState();
     const [errorText, setErrorText] = useState();
+    const [submitSuccess, setsubmitSuccess] = useState();
     const [occupationData, setOccupationData] = useState();
     const [occupation, setOccupation] = useState();
 
@@ -33,16 +34,16 @@ function App() {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-                window.location = "/retrieve" //This line of code will redirect you once the submission is succeed
             })
-
 
         if (!name || !state || !occupation || !password) {
             setErrorText("missing data");
             return;
+        }else{
+            setsubmitSuccess("Congratulations! Form submited successfully!");
         }
-
     }
+
     useEffect(() => {
 
         axios.get("https://frontend-take-home.fetchrewards.com/form")
@@ -59,11 +60,11 @@ function App() {
     }, []);
 
 
-
   return (
-      <form>
+
       <div className="App">
-        {errorText && <p style={{ color: "red" }}>Please enter a value </p>}
+        {errorText && <p style={{ color: "red" }}>Please fill out all required fields </p>}
+
         <label>Name:</label>
         <input
             minlength="1"
@@ -95,9 +96,10 @@ function App() {
                 return <option key={index}>{data.name}</option>;
               })}
         </select>
-        <Button onClick = {() => handleSubmit()} variant="contained" >Submit</Button>
+        <Button onClick ={() => handleSubmit()} variant="contained" >Submit</Button>
+
+          {submitSuccess && <p style={{ color: "green" }}>Congratulations! Form submitted successfully! </p>}
       </div>
-</form>
   );
 
 }
