@@ -68,9 +68,9 @@ function App() {
             });
     }, []);
 
-    // const handleChange = (event: SelectChangeEvent) => {
-    //     setOccupation(event.target.value);
-    // };
+    const handleChange = (event: SelectChangeEvent) => {
+        setOccupation(event.target.value);
+    };
 
 
   return (
@@ -82,7 +82,7 @@ function App() {
                   <Box
                       component="form"
                       sx={{
-                          marginTop: 5,
+                          marginTop: 20,
                           display: 'flex',
                           flexDirection: 'column',
                           alignItems: 'center',
@@ -99,42 +99,29 @@ function App() {
                                 type={"password"}fullWidth label="Password" id="fullWidth" />
 
 
-                      {/*onChange={(e) => setOccupation(e.target.value)} label="Occupations" id="fullWidth"/>*/}
-                      {/*{occupationData &&*/}
-                      {/*    occupationData.map((data, index) => {*/}
-                      {/*        return <option key={index}>{data}</option>;*/}
-
-                      {/*    })}*/}
-
                       <Box sx={{ minWidth: 400 }}>
                           <FormControl fullWidth>
-                              <InputLabel  id="demo-simple-select-label">Occupation</InputLabel>
-                              <Select
-                                  onChange={(e) => setOccupation(e.target.value)}>
-                                  {occupationData &&
-                                      occupationData.map((data, index) => {
-                                          return <option key={index}>{data}</option>;
-                                      })}
-                                  >
-                              </Select>
+                              <label>Occupation</label>
+                      <select onChange={(e) => setOccupation(e.target.value)}>
+                          {occupationData &&
+                              occupationData.map((data, index) => {
+                                  return <option key={index}>{data}</option>;
+                              })}
+                      </select>
                           </FormControl>
                       </Box>
 
-          <Box sx={{ minWidth: 400 }}>
-              <FormControl fullWidth>
-                  <InputLabel  id="demo-simple-select-label">State</InputLabel>
-                  <Select
-                      onChange={(e) => setState(e.target.value)}>
-                      {states &&
-                          states.map((data, index) => {
-                              return <option key={index}>{data.name}</option>;
-                          })}
-                  >
-                  </Select>
-              </FormControl>
-          </Box>
-
-
+                      <Box sx={{ minWidth: 400 }}>
+                          <FormControl fullWidth>
+                              <label>States</label>
+                      <select onChange={(e) => setState(e.target.value)}>
+                          {states &&
+                              states.map((data, index) => {
+                                  return <option key={index}>{data.name}</option>;
+                              })}
+                      </select>
+                          </FormControl>
+                      </Box>
 
                    <Button onClick={() => handleSubmit()} fullWidth variant="contained">Submit</Button>
                       {errorText && <p style={{color: "red"}}>Please fill out all required fields </p>}
